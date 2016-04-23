@@ -132,6 +132,11 @@
 #define fopen64 std::fopen
 #endif
 
+#ifdef __CYGWIN__
+//#define off64_t off_t
+#define fopen64 std::fopen
+#endif
+
 extern "C" {
 #include <sys/types.h>
 }
