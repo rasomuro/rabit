@@ -17,7 +17,11 @@ endif
 
 # Mac OS X does not support "-lrt" flag
 ifeq ($(OS), Windows_NT)
-	UNAME=Windows
+	ifeq ($(findstring CYGWIN,$(shell uname -s)), CYGWIN)
+		UNAME=Cygwin
+	else
+		UNAME=Windows
+	endif
 else 
 	UNAME=$(shell uname)
 endif
